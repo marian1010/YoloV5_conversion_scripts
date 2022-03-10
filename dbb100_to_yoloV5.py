@@ -37,8 +37,8 @@ def dbb100_to_yoloV5(file,outputDir):
                 x2=j['box2d']['x2']
                 y1=j['box2d']['y1']
                 y2=j['box2d']['y2']
-                center_point_x = (x2-x1)/2
-                center_point_y = (y2-y1)/2
+                center_point_x = (x2+x1)/2
+                center_point_y = (y2+y1)/2
                 width = (x2-x1)
                 height= (y2-y1)
                 
