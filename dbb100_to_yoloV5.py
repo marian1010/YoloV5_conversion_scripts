@@ -11,16 +11,15 @@ from tqdm import tqdm
 def dbb100_to_yoloV5(file,outputDir):
     
     class_dic = dict()
-    class_dic.update({"pedestrian":0})
+    class_dic.update({"person":0})
     class_dic.update({"rider":1})
     class_dic.update({"car":2})
     class_dic.update({"truck":3})
     class_dic.update({"bus":4})
     class_dic.update({"train":5})
-    class_dic.update({"motorcycle":6})
-    class_dic.update({"bicycle":7})
-    class_dic.update({"traffic light":8})
-    class_dic.update({"traffic sign":9})
+    class_dic.update({"motor":6}) 
+    class_dic.update({"traffic light":7})
+    class_dic.update({"traffic sign":8})
 
     ##images = list()
     position = list()
@@ -69,12 +68,12 @@ def main(argv):
     options, args=getopt.getopt(argv,"hi:o:",["infile=","outputDir="])
 
     if(len(options)==0):
-        print ('coco_to_darknet.py -i imputfile -o outputfile')
+        print ('-i imputfile -o outputfile')
         sys.exit(2)
 
     for i , arg in options:
         if(i == '-h'):
-            print ('coco_to_darknet.py -i imputfile -o outputDir')
+            print ('-i imputfile -o outputDir')
             sys.exit()
         elif i in ("-i","--infile"):
             inputfile = arg
