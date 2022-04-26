@@ -68,7 +68,7 @@ def dbb100_to_yoloV5(file,outputDir):
     class_dic["position"] = images
     class_dic["type"] = "instances"
 
-    with open(outputDir,"w") as destfile:
+    with open(outputDir,"a") as destfile:
         json.dump(class_dic,destfile)
               
         
@@ -83,7 +83,7 @@ def main(argv):
     inputfile = ''
     outputDir= ''
     named= ''
-    options, args=getopt.getopt(argv,"hi:o:n",["infile=","outputDir=","nameFile"])
+    options, args=getopt.getopt(argv,"hi:o:n",["infile=","outputDir=","nameFile="])
 
     if(len(options)==0):
         print ('-i imputfile -o outputfile')
@@ -106,7 +106,7 @@ def main(argv):
     with open(inputfile) as file:
         labels =json.load(file)
 
-    dbb100_to_yoloV5(labels,outputDir+named)
+    dbb100_to_yoloV5(labels,outputDir+"coco_bdd"+named)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
