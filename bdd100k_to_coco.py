@@ -44,8 +44,7 @@ def dbb100_to_yoloV5(file,outputDir):
                 sin_imagen=False
                 tmp=1
                 annotation["iscrowd"] = 0
-                annotation["image_id"] = 0
-                category = class_dic[j['category_id']]
+                annotation["image_id"] = image['id']
                 x1=j['box2d']['x1']
                 x2=j['box2d']['x2']
                 y1=j['box2d']['y1']
