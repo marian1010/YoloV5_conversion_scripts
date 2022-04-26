@@ -64,12 +64,12 @@ def dbb100_to_yoloV5(file,outputDir):
             if tmp == 1:
                 images.append(image)
 
-        class_dic["images"] = images
-        class_dic["position"] = images
-        class_dic["type"] = "instances"
+    class_dic["images"] = images
+    class_dic["position"] = images
+    class_dic["type"] = "instances"
 
-        with open(outputDir,"w") as destfile:
-            json.dump(class_dic,destfile)
+    with open(outputDir,"w") as destfile:
+        json.dump(class_dic,destfile)
               
         
     print ('Finish')
