@@ -137,7 +137,7 @@ for sample_idx in tqdm(range(0,len(nuim.sample))):
     image['id'] = counter   
     image['height'] = IMAGE_HEIGHT
     image['width'] = IMAGE_WIDTH
-    image['file_name']= '{sample_idx}.txt'
+    image['file_name']= str(sample_idx)+'.txt'
     
     sin_imagen=True
     tmp = 0
@@ -184,7 +184,7 @@ for sample_idx in tqdm(range(0,len(nuim.sample))):
     class_dic["info"] = ""
     class_dic["licenses"] = ""
 
-with open(DATA_ROOT+"nuscenes_annotation","a") as destfile:
+with open(DATA_ROOT+"nuscenes_annotation.json","a") as destfile:
     json.dump(class_dic,destfile,indent=4,sort_keys=True)
         
     
