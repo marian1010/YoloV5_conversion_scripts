@@ -5,7 +5,7 @@ from tqdm import tqdm
 import os
 import yaml
 
-#---------------------------------- DEFINE CONSTANTS HERE -----------------------------------------
+
 DATA_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 #nuimages has same image dimensions for all images
@@ -58,19 +58,15 @@ with open(os.path.join(DATA_ROOT,'nuimages.yaml'),'w') as file:
 
 	yaml.dump(data, file, sort_keys = False)
 
-#-------------------------------  Dump Images & Create Label files -------------------------------------
-#Create files per section #2 of https://github.com/ultralytics/yolov5/issues/12
 
-#for version in ['train','val']:
-	#print(f'Processing {version} set...')
+
 version = 'val'
-	#make image and label output directories if they don't exist
-	#os.makedirs(os.path.join(DATA_ROOT,'images',version),exist_ok = True)
+
 os.makedirs(os.path.join(DATA_ROOT,'labels',version),exist_ok = True)
 
 nuim = NuImages(dataroot=DATA_ROOT, version='v1.0-'+version, verbose=True, lazy=True)
 
-	#create reverse class index dictionary: {animal -> 0, barrier -> 1, bicycle -> 2, ...}
+	
 class_index_map = {obj_class:classes.index(class_map[obj_class]) for obj_class in class_map if class_map[obj_class] != 'None'}
 
 
@@ -124,12 +120,7 @@ for sample_idx in tqdm(range(0,len(nuim.sample))):
 
     object_tokens, surface_tokens = nuim.list_anns(sample['token'], verbose = False)
 
-    #nuim.render_image(key_camera_token, annotation_type='none',with_category=True, with_attributes=True, box_line_width=-1, render_scale=5, 
-                        #out_path = os.path.join(DATA_ROOT,'images',version,f'{sample_idx}.jpg'))		
-
-
-
-    #with open(os.path.join(DATA_ROOT,'labels',version,f'{sample_idx}.txt'),'w') as file:
+ 
         
            
     counter += 1
@@ -190,11 +181,4 @@ with open(DATA_ROOT+"nuscenes_annotation.json","a") as destfile:
     
 print ('Finish')
 
-				#if class_map[token_name] != 'None':
-					
-                    #file.writelines('{} {} {} {} {}\n'.format(class_index_map[token_name],
-															#(token_data['bbox'][2] + token_data['bbox'][0])/(IMAGE_WIDTH * 2),
-															#(token_data['bbox'][3] + token_data['bbox'][1])/(IMAGE_HEIGHT * 2),
-															#(token_data['bbox'][2] - token_data['bbox'][0])/IMAGE_WIDTH,
-															#(token_data['bbox'][3] - token_data['bbox'][1])/IMAGE_HEIGHT,
-															#))
+			
