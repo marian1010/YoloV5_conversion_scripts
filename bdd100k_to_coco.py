@@ -44,9 +44,9 @@ def dbb100_to_yoloV5(file,outputDir):
 
     counter= 0
 
-    for i in tqdm(file):
-        counter += 1
+    for i in tqdm(file):    
         image = dict()
+        counter += 1
         image['id'] = counter   
         image['height'] = 720
         image['width'] = 1280
