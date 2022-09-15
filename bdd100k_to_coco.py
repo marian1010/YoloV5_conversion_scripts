@@ -81,7 +81,7 @@ def dbb100_to_yoloV5(file,outputDir):
             else:                
                 ignored_categoris.append(j['category'])
         if sin_imagen:
-            print('Sin imagen')
+            print('empty image!')
         if tmp == 1:
             images.append(image)
 
