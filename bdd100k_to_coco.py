@@ -53,13 +53,13 @@ def dbb100_to_yoloV5(file,outputDir):
         image['file_name']=i['name']
          
         sin_imagen=True
-        hay_objeto = 0
+        tmp = 0
         for j in i['labels']:
             annotation = dict()
 
             if j['category'] in class_dic_aux.keys(): 
                 sin_imagen=False
-                hay_objeto=1
+                tmp=1
                 
                 annotation['id'] = j['id']
                 annotation["image_id"] = image['id']
@@ -82,7 +82,7 @@ def dbb100_to_yoloV5(file,outputDir):
                 ignored_categoris.append(j['category'])
         if sin_imagen:
             print('Sin imagen')
-        if hay_objeto == 1:
+        if tmp == 1:
             images.append(image)
 
     
